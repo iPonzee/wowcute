@@ -325,7 +325,7 @@ body {
   pointer-events: none;
 }
 
-/* --- BOUQUET WRAPPER (Wider V-Shape to catch stems) --- */
+/* --- BOUQUET WRAPPER (Wider & Shorter) --- */
 .bouquet-wrapper {
   position: absolute;
   bottom: -30px;
@@ -333,8 +333,8 @@ body {
   transform: translateX(-50%);
   width: 600px;
   /* Very wide top to catch 50deg stems */
-  height: 240px;
-  /* Shorter height */
+  height: 180px;
+  /* SHORTER height (was 240px) */
   background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 60%, #4fc3f7 100%);
 
   /* Trapezoid: Wide top (100%), Narrow pinched bottom (10%) Creates a fan shape */
