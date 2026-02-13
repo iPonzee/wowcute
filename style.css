@@ -725,8 +725,15 @@ body {
     transform: translateX(-50%);
   }
 
-  /* Ensure text doesn't overflow */
+  /* BIG TEXT for Mobile */
   .greetings {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: 3.2rem;
+    /* Was clamped, now fixed Big Cursive */
+  }
+
+  .bouquet-message {
+    font-size: 1.6rem;
+    /* Bigger Emojis */
+    margin-top: 10px;
   }
 }
