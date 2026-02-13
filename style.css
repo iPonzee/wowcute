@@ -331,13 +331,13 @@ body {
   bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  /* Very wide top to catch 50deg stems */
+  width: 500px;
+  /* REDUCED Width from 600px to 500px */
   height: 180px;
-  /* SHORTER height (was 240px) */
+  /* Keeps short height */
   background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 60%, #4fc3f7 100%);
 
-  /* Trapezoid: Wide top (100%), Narrow pinched bottom (10%) Creates a fan shape */
+  /* Trapezoid: Wide top, Narrow bottom */
   clip-path: polygon(0 0, 100% 0, 55% 100%, 45% 100%);
 
   z-index: 15;
