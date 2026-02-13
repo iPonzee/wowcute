@@ -347,29 +347,31 @@ body {
   transform-origin: bottom center;
 }
 
+/* --- BIGGER STEMS --- */
 .stem {
   position: absolute;
   bottom: 0;
-  left: -3px;
-  width: 6px;
+  left: -5px;
+  width: 10px;
   height: 0;
   /* Grows to var(--h) */
   background: linear-gradient(to top, var(--stem-dk), var(--stem));
-  border-radius: 3px;
-  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
 }
 
+/* --- BIGGER LEAVES --- */
 .stem-leaf {
   position: absolute;
-  width: 30px;
-  height: 15px;
+  width: 50px;
+  height: 25px;
   background: linear-gradient(135deg, var(--leaf), var(--stem-dk));
-  border-radius: 20px 0;
+  border-radius: 30px 0;
   opacity: 0;
 }
 
 /* =============================================
-   FLOWER HEADS
+   FLOWER HEADS — ALL UPSCALED ~1.5x
    ============================================= */
 .bloom {
   position: absolute;
@@ -383,11 +385,11 @@ body {
   z-index: 2;
 }
 
-/* ROSE */
+/* ROSE (130px) */
 .rose-petals {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 130px;
+  height: 130px;
   transform: translate(-50%, -100%);
 }
 
@@ -401,16 +403,16 @@ body {
 }
 
 .rp:nth-child(1) {
-  transform: rotate(0deg) translate(4px, 4px);
+  transform: rotate(0deg) translate(6px, 6px);
 }
 
 .rp:nth-child(2) {
-  transform: rotate(120deg) translate(4px, 4px);
+  transform: rotate(120deg) translate(6px, 6px);
   background: var(--pink2);
 }
 
 .rp:nth-child(3) {
-  transform: rotate(240deg) translate(4px, 4px);
+  transform: rotate(240deg) translate(6px, 6px);
   background: var(--pink4);
 }
 
@@ -422,11 +424,11 @@ body {
   opacity: 0.9;
 }
 
-/* SUNFLOWER */
+/* SUNFLOWER (150px) */
 .sunflower-petals {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   transform: translate(-50%, -100%);
 }
 
@@ -434,13 +436,13 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 22px;
-  height: 45px;
-  margin-left: -11px;
-  margin-top: -45px;
+  width: 30px;
+  height: 65px;
+  margin-left: -15px;
+  margin-top: -65px;
   background: linear-gradient(to top, #ffab91, #ffcc80);
   /* Peach/Orange */
-  border-radius: 50% 50% 10px 10px;
+  border-radius: 50% 50% 15px 15px;
   transform-origin: center bottom;
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
@@ -450,46 +452,46 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: radial-gradient(circle, #8d6e63, #5d4037);
-  border: 4px solid #ffe0b2;
+  border: 6px solid #ffe0b2;
   z-index: 10;
 }
 
-/* TULIP */
+/* TULIP (80x100) */
 .tulip-head {
   position: absolute;
-  width: 50px;
-  height: 65px;
+  width: 80px;
+  height: 100px;
   transform: translate(-50%, -100%);
   background: linear-gradient(to top, var(--pink3), var(--pink1));
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 35px 35px;
 }
 
 .tulip-top {
   position: absolute;
-  top: -15px;
+  top: -20px;
   width: 100%;
-  height: 30px;
+  height: 40px;
   display: flex;
   justify-content: center;
 }
 
 .tt {
-  width: 16px;
-  height: 30px;
+  width: 26px;
+  height: 40px;
   background: var(--pink3);
   border-radius: 50% 50% 0 0;
   margin: 0 1px;
 }
 
-/* DAISY */
+/* DAISY (110px) */
 .daisy-head {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 110px;
+  height: 110px;
   transform: translate(-50%, -100%);
 }
 
@@ -497,12 +499,12 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 14px;
-  height: 35px;
-  margin-left: -7px;
-  margin-top: -35px;
+  width: 20px;
+  height: 50px;
+  margin-left: -10px;
+  margin-top: -50px;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   transform-origin: center bottom;
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -512,36 +514,36 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   background: #ffd54f;
   border-radius: 50%;
   z-index: 5;
 }
 
-/* LAVENDER */
+/* LAVENDER (18px wide units) */
 .lavender-head {
   position: absolute;
-  width: 12px;
-  height: 90px;
+  width: 18px;
+  height: 120px;
   transform: translate(-50%, -100%);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
 }
 
 .ld {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   background: var(--lav3);
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(100, 50, 200, 0.2);
 }
 
 .ld:nth-child(even) {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   opacity: 0.8;
 }
 
@@ -616,7 +618,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .bouquet {
-    transform: translateX(-50%) scale(0.85);
+    transform: translateX(-50%) scale(0.8);
     transform-origin: bottom center;
   }
 

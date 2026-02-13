@@ -1,5 +1,5 @@
 // ============================
-// Valentine's Day Website — JS (Final - Visible & Animated)
+// Valentine's Day Website — JS (Upscaled)
 // ============================
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealBtn = document.getElementById('revealBtn');
   const bouquet = document.getElementById('bouquet');
 
-  // Reveal
+  // ---- Reveal Button ----
   revealBtn.addEventListener('click', () => {
     landing.classList.add('hidden');
     setTimeout(() => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
   });
 
-  // Date
+  // ---- Date Card ----
   const now = new Date();
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
   const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -29,66 +29,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================
-  // FLOWER CONFIGURATION
+  // FLOWER CONFIGURATION (Taller Stems for Big Flowers)
   // ============================
   const flowers = [
     // Back Layer
-    { type: 'sunflower', h: 320, angle: -28, delay: 100 },
-    { type: 'rose', h: 310, angle: 28, delay: 200 },
-    { type: 'tulip', h: 330, angle: -10, delay: 300 },
-    { type: 'daisy', h: 300, angle: 10, delay: 400 },
+    { type: 'sunflower', h: 420, angle: -25, delay: 100 },
+    { type: 'rose', h: 410, angle: 25, delay: 200 },
+    { type: 'tulip', h: 440, angle: -10, delay: 300 },
+    { type: 'daisy', h: 400, angle: 10, delay: 400 },
 
     // Front Layer 
-    { type: 'rose', h: 380, angle: 0, delay: 500 },  // Center Big
-    { type: 'daisy', h: 360, angle: -16, delay: 600 },
-    { type: 'sunflower', h: 350, angle: 16, delay: 700 },  // Right Big
-    { type: 'lavender', h: 270, angle: -45, delay: 800 },
-    { type: 'lavender', h: 280, angle: 45, delay: 900 },
-    { type: 'rose', h: 260, angle: -60, delay: 1000 },
-    { type: 'tulip', h: 250, angle: 60, delay: 1100 },
+    { type: 'rose', h: 500, angle: 0, delay: 500 },  // Center Big (Tallest)
+    { type: 'daisy', h: 460, angle: -15, delay: 600 },
+    { type: 'sunflower', h: 480, angle: 15, delay: 700 },  // Right Big
+    { type: 'lavender', h: 380, angle: -35, delay: 800 },
+    { type: 'lavender', h: 390, angle: 35, delay: 900 },
+    { type: 'rose', h: 350, angle: -50, delay: 1000 },
+    { type: 'tulip', h: 340, angle: 50, delay: 1100 },
   ];
 
   function growFlowers() {
     flowers.forEach((f, i) => {
-      // Wrapper
+      // 1. Create Wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'stem-wrapper';
-      wrapper.style.zIndex = (i < 4) ? 5 : 10; // First 4 are back layer
+      // Store custom properties for CSS
       wrapper.style.setProperty('--h', f.h + 'px');
       wrapper.style.setProperty('--r', f.angle + 'deg');
-      // Initial Static Rotation (before animation)
+      // Set initial rotation so it's angled correctly before swaying
       wrapper.style.transform = `rotate(${f.angle}deg)`;
+
+      // Z-Index: middle items (index 3,4) are frontmost (conceptually)
+      // Actually simply:
+      wrapper.style.zIndex = (i < 4) ? 5 : 10;
 
       bouquet.appendChild(wrapper);
 
-      // Stem
+      // 2. Create Stem
       const stem = document.createElement('div');
       stem.className = 'stem';
       wrapper.appendChild(stem);
 
-      // Leaves
+      // 3. Create Leaves
       const leafL = document.createElement('div');
       leafL.className = 'stem-leaf';
-      leafL.style.left = '-25px';
+      leafL.style.left = '-35px'; // pushed further out due to wider stems
       leafL.style.bottom = (f.h * 0.35) + 'px';
-      leafL.style.setProperty('--rot', '-30deg'); // Custom property for animation
-      leafL.style.transform = 'rotate(-30deg) scale(0)';
+      leafL.style.setProperty('--rot', '-35deg'); // steeper angle
+      leafL.style.transform = 'rotate(-35deg) scale(0)';
       wrapper.appendChild(leafL);
 
       const leafR = document.createElement('div');
       leafR.className = 'stem-leaf';
-      leafR.style.left = '2px';
+      leafR.style.left = '5px';
       leafR.style.bottom = (f.h * 0.55) + 'px';
-      leafR.style.setProperty('--rot', '30deg');
-      leafR.style.transform = 'rotate(30deg) scale(0)';
+      leafR.style.setProperty('--rot', '35deg');
+      leafR.style.transform = 'rotate(35deg) scale(0)';
       wrapper.appendChild(leafR);
 
-      // Bloom
+      // 4. Create Bloom
       const bloom = document.createElement('div');
       bloom.className = 'bloom';
-      bloom.style.bottom = f.h + 'px'; // Set exact bottom position
-      // Reset top to auto so bottom works
-      bloom.style.top = 'auto';
+      bloom.style.bottom = f.h + 'px';
+      bloom.style.top = 'auto'; // important override
       wrapper.appendChild(bloom);
 
       // Inner Bloom HTML
@@ -110,8 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       bloom.innerHTML = html;
 
-      // Anim Sequence
-      setTimeout(() => { stem.classList.add('grow-stem-anim'); }, f.delay);
+      // 5. Trigger Animations Sequence
+      // Stem grows
+      setTimeout(() => {
+        stem.classList.add('grow-stem-anim');
+      }, f.delay);
 
       setTimeout(() => {
         leafL.classList.add('leaf-anim');
@@ -120,8 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => { bloom.classList.add('bloom-anim'); }, f.delay + 1500);
 
-      // Keep static rotation, just add sway class which uses --r
-      setTimeout(() => { wrapper.classList.add('sway-anim'); }, f.delay + 2200);
+      // Sway starts
+      setTimeout(() => {
+        wrapper.classList.add('sway-anim');
+      }, f.delay + 2200);
     });
   }
+
 });
