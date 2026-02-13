@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     landing.classList.add('hidden');
     setTimeout(() => {
       bouquetPage.classList.add('visible');
+      createStars();
+      growBackLayer();
       growBouquet();
       startParticles();
     }, 600);
@@ -46,28 +48,66 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================
-  // GROW BOUQUET — stems fan out from center
+  // STARS
+  // ============================
+  function createStars() {
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 55 + '%';   // only in upper sky
+      star.style.width = (1.5 + Math.random() * 3) + 'px';
+      star.style.height = star.style.width;
+      star.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+      star.style.animationDelay = (Math.random() * 3) + 's';
+      container.appendChild(star);
+    }
+  }
+
+  // ============================
+  // BACK LAYER — blurred depth flowers
+  // ============================
+  function growBackLayer() {
+    const backs = [
+      { sel: '.bk-1', h: 320, angle: -8, delay: 200 },
+      { sel: '.bk-2', h: 290, angle: 6, delay: 400 },
+      { sel: '.bk-3', h: 250, angle: -20, delay: 600 },
+      { sel: '.bk-4', h: 260, angle: 18, delay: 500 },
+      { sel: '.bk-5', h: 240, angle: -32, delay: 700 },
+      { sel: '.bk-6', h: 230, angle: 30, delay: 800 },
+    ];
+
+    backs.forEach(f => {
+      const wrapper = document.querySelector(f.sel);
+      if (!wrapper) return;
+      const stem = wrapper.querySelector('.stem');
+      const bloom = wrapper.querySelector('.bloom');
+
+      stem.style.setProperty('--h', f.h + 'px');
+      if (bloom) bloom.style.top = (-f.h) + 'px';
+
+      // Grow stem
+      setTimeout(() => { stem.classList.add('stem-grow'); }, f.delay);
+      // Show bloom (already visible via CSS override, just bloom in)
+      setTimeout(() => { if (bloom) bloom.classList.add('bloom-in'); }, f.delay + 1800);
+    });
+  }
+
+  // ============================
+  // GROW FRONT BOUQUET
   // ============================
   function growBouquet() {
-    /*
-     * Each flower config:
-     *  sel   = CSS selector for the stem-wrapper
-     *  h     = stem height in px
-     *  angle = rotation angle (set via CSS, used for sway)
-     *  leafY = leaf position from bottom
-     *  delay = start delay in ms
-     *  sway  = sway class
-     */
     const flowers = [
-      { sel: '.sw-1', h: 380, angle: 0, leafY: 180, delay: 0, sway: 'sway-a' }, // center rose
-      { sel: '.sw-2', h: 340, angle: -12, leafY: 160, delay: 300, sway: 'sway-b' }, // daisy
-      { sel: '.sw-3', h: 320, angle: 10, leafY: 150, delay: 500, sway: 'sway-a' }, // tulip
-      { sel: '.sw-4', h: 300, angle: -25, leafY: 140, delay: 800, sway: 'sway-c' }, // sunflower
-      { sel: '.sw-5', h: 310, angle: 22, leafY: 145, delay: 700, sway: 'sway-b' }, // cherry
-      { sel: '.sw-6', h: 260, angle: -36, leafY: 120, delay: 1000, sway: 'sway-a' }, // small rose
-      { sel: '.sw-7', h: 270, angle: 34, leafY: 125, delay: 1100, sway: 'sway-c' }, // small sunflower
-      { sel: '.sw-8', h: 240, angle: -44, leafY: 0, delay: 1300, sway: 'sway-b' }, // lavender
-      { sel: '.sw-9', h: 250, angle: 42, leafY: 0, delay: 1400, sway: 'sway-c' }, // lavender
+      { sel: '.sw-1', h: 380, angle: 0, leafY: 180, delay: 100, sway: 'sway-a' },
+      { sel: '.sw-2', h: 340, angle: -14, leafY: 160, delay: 400, sway: 'sway-b' },
+      { sel: '.sw-3', h: 320, angle: 12, leafY: 150, delay: 600, sway: 'sway-a' },
+      { sel: '.sw-4', h: 300, angle: -27, leafY: 140, delay: 800, sway: 'sway-c' },
+      { sel: '.sw-5', h: 310, angle: 24, leafY: 145, delay: 700, sway: 'sway-b' },
+      { sel: '.sw-6', h: 260, angle: -38, leafY: 120, delay: 1000, sway: 'sway-a' },
+      { sel: '.sw-7', h: 270, angle: 36, leafY: 125, delay: 1100, sway: 'sway-c' },
+      { sel: '.sw-8', h: 240, angle: -48, leafY: 0, delay: 1300, sway: 'sway-b' },
+      { sel: '.sw-9', h: 250, angle: 46, leafY: 0, delay: 1400, sway: 'sway-c' },
     ];
 
     flowers.forEach(f => {
@@ -78,47 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const leaves = wrapper.querySelectorAll('.stem-leaf');
       const bloom = wrapper.querySelector('.bloom');
 
-      // Store the rotation angle for sway
       wrapper.style.setProperty('--r', f.angle + 'deg');
-
-      // Set stem height variable
       stem.style.setProperty('--h', f.h + 'px');
 
-      // Position bloom at top of stem
-      if (bloom) {
-        bloom.style.top = (-f.h) + 'px';
-      }
-
-      // Position leaves
-      leaves.forEach(leaf => {
-        leaf.style.bottom = f.leafY + 'px';
-      });
+      if (bloom) bloom.style.top = (-f.h) + 'px';
+      leaves.forEach(leaf => { leaf.style.bottom = f.leafY + 'px'; });
 
       // Step 1: Grow stem
-      setTimeout(() => {
-        stem.classList.add('stem-grow');
-      }, f.delay);
+      setTimeout(() => { stem.classList.add('stem-grow'); }, f.delay);
 
       // Step 2: Leaves
       if (f.leafY > 0) {
         setTimeout(() => {
           leaves.forEach(leaf => {
-            leaf.classList.add(
-              leaf.classList.contains('stem-leaf-l') ? 'leaf-in-l' : 'leaf-in-r'
-            );
+            leaf.classList.add(leaf.classList.contains('stem-leaf-l') ? 'leaf-in-l' : 'leaf-in-r');
           });
         }, f.delay + 1600);
       }
 
       // Step 3: Bloom
-      setTimeout(() => {
-        if (bloom) bloom.classList.add('bloom-in');
-      }, f.delay + 2000);
+      setTimeout(() => { if (bloom) bloom.classList.add('bloom-in'); }, f.delay + 2000);
 
-      // Step 4: Sway (use the stored angle)
-      setTimeout(() => {
-        wrapper.classList.add(f.sway);
-      }, f.delay + 2800);
+      // Step 4: Sway
+      setTimeout(() => { wrapper.classList.add(f.sway); }, f.delay + 2800);
     });
 
     // Baby's breath
@@ -128,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================
-  // PARTICLE SYSTEM
+  // PARTICLES
   // ============================
   function startParticles() {
     const colors = [
