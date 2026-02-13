@@ -318,31 +318,23 @@ body {
   pointer-events: none;
 }
 
-/* --- BOUQUET WRAPPER --- */
+/* --- BOUQUET WRAPPER (Wider to cover specific stems) --- */
 .bouquet-wrapper {
   position: absolute;
-  bottom: -20px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
-  height: 260px;
+  width: 420px;
+  /* Much wider */
+  height: 320px;
+  /* Taller */
   background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 60%, #4fc3f7 100%);
-  /* Pastel Blue Gradient */
 
-  /* Trapezoid shape via clip-path */
-  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  /* Trapezoid: Wide top, narrow bottom */
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
 
-  z-index: 8;
-  /* Behind front stems (10), above back stems (5) -> wait, if back stems are 5, wrapper hides them.
-                Actually wrappers usually wrap around the bottom.
-                Let's make it z-index 12 to COVER the stems at base?
-                Or behind to show stems popping out?
-                Usually wrapper goes OUTSIDE stems. So z-index > stems.
-                But stems grow UP.
-                Let's put wrapper at z-index 2 so stems (z-5, z-10) are IN FRONT?
-                No, wrapper covers the stems at the bottom.
-                So wrapper z-index 15. */
   z-index: 15;
+  /* Covers stem bases */
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   opacity: 0;
@@ -365,15 +357,14 @@ body {
 /* --- RIBBON --- */
 .bouquet-ribbon {
   position: absolute;
-  bottom: 60px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 20px;
+  width: 120px;
+  height: 25px;
+  /* Wider ribbon for wider wrapper */
   background: #ff8fa3;
-  /* Pink Ribbon */
   z-index: 16;
-  /* On top of wrapper */
   border-radius: 10px;
   opacity: 0;
   animation: ribbonIn 0.8s ease-out 2.5s forwards;
@@ -382,11 +373,11 @@ body {
 
 .ribbon-bow {
   position: absolute;
-  top: -15px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background: #ff8fa3;
   border-radius: 50%;
 }
@@ -396,22 +387,22 @@ body {
   content: '';
   position: absolute;
   top: 5px;
-  width: 40px;
-  height: 40px;
-  border: 6px solid #ff8fa3;
+  width: 50px;
+  height: 50px;
+  border: 8px solid #ff8fa3;
   border-radius: 50%;
   box-sizing: border-box;
 }
 
 .ribbon-bow::before {
-  left: -25px;
+  left: -30px;
   border-right-color: transparent;
   border-bottom-color: transparent;
   transform: rotate(-45deg);
 }
 
 .ribbon-bow::after {
-  right: -25px;
+  right: -30px;
   border-left-color: transparent;
   border-bottom-color: transparent;
   transform: rotate(45deg);
