@@ -1,5 +1,5 @@
 // ============================
-// Valentine's Day Website — JS (No Date Card)
+// Valentine's Day Website — JS (With Scenery Flowers)
 // ============================
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const bouquetPage = document.getElementById('bouquetPage');
   const revealBtn = document.getElementById('revealBtn');
   const bouquet = document.getElementById('bouquet');
+
+  // Create Scenery Background Flowers
+  createFieldFlowers();
 
   // ---- Reveal Button ----
   revealBtn.addEventListener('click', () => {
@@ -18,7 +21,70 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================
-  // FLOWER CONFIGURATION (Taller Stems for Big Flowers)
+  // SCENERY FLOWERS (Background Blurred)
+  // ============================
+  function createFieldFlowers() {
+    const scenery = document.querySelector('.scenery');
+    if (!scenery) return;
+
+    // Create 40 random flowers in the background
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      const f = document.createElement('div');
+      f.className = 'field-flower';
+
+      // Random Position: 0-100% width, 0-15% bottom height (on the hills)
+      const x = Math.random() * 100;
+      const y = Math.random() * 15;
+
+      // Random Scale: 0.15 to 0.35 (small background flowers)
+      const s = 0.15 + Math.random() * 0.20;
+
+      // Random Blur: 2px to 5px
+      const b = 2 + Math.random() * 3;
+
+      // Random Type
+      const types = ['rose', 'sunflower', 'daisy', 'tulip'];
+      const type = types[Math.floor(Math.random() * types.length)];
+
+      f.style.left = x + '%';
+      f.style.bottom = y + '%';
+      f.style.transform = `scale(${s})`;
+      f.style.filter = `blur(${b}px)`;
+      f.style.opacity = '0.7';
+      f.style.zIndex = Math.floor(y / 5) + 1; // Slight layering with hills
+
+      // Tiny stem
+      const stem = document.createElement('div');
+      stem.className = 'field-stem';
+      f.appendChild(stem);
+
+      // Head HTML (simplified versions of main flowers)
+      let head = document.createElement('div');
+      head.className = 'bloom';
+      head.style.position = 'relative'; // Override absolute for field context
+      head.style.opacity = 1;
+      head.style.transform = 'scale(1)';
+
+      if (type === 'rose') {
+        head.innerHTML = `<div class="rose-petals"><div class="rp"></div><div class="rp"></div><div class="rp"></div><div class="rp-inner"></div></div>`;
+      } else if (type === 'sunflower') {
+        let p = ''; for (let k = 0; k < 12; k++) p += `<div class="sp" style="transform:rotate(${k * 30}deg)"></div>`;
+        head.innerHTML = `<div class="sunflower-petals">${p}<div class="sun-center"></div></div>`;
+      } else if (type === 'daisy') {
+        let p = ''; for (let k = 0; k < 8; k++) p += `<div class="dp" style="transform:rotate(${k * 45}deg)"></div>`;
+        head.innerHTML = `<div class="daisy-head">${p}<div class="daisy-center"></div></div>`;
+      } else if (type === 'tulip') {
+        head.innerHTML = `<div class="tulip-head"><div class="tulip-top"><div class="tt"></div><div class="tt"></div><div class="tt"></div></div></div>`;
+      }
+
+      f.appendChild(head);
+      scenery.appendChild(f);
+    }
+  }
+
+  // ============================
+  // MAIN BOUQUET FLOWERS
   // ============================
   const flowers = [
     // Back Layer
@@ -42,15 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. Create Wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'stem-wrapper';
-      // Store custom properties for CSS
       wrapper.style.setProperty('--h', f.h + 'px');
       wrapper.style.setProperty('--r', f.angle + 'deg');
-      // Set initial rotation so it's angled correctly before swaying
       wrapper.style.transform = `rotate(${f.angle}deg)`;
-
-      // Z-Index setup
       wrapper.style.zIndex = (i < 4) ? 5 : 10;
-
       bouquet.appendChild(wrapper);
 
       // 2. Create Stem
@@ -79,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const bloom = document.createElement('div');
       bloom.className = 'bloom';
       bloom.style.bottom = f.h + 'px';
-      bloom.style.top = 'auto'; // important override
+      bloom.style.top = 'auto';
       wrapper.appendChild(bloom);
 
       // Inner Bloom HTML
@@ -101,23 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       bloom.innerHTML = html;
 
-      // 5. Trigger Animations Sequence
-      // Stem grows
-      setTimeout(() => {
-        stem.classList.add('grow-stem-anim');
-      }, f.delay);
-
-      setTimeout(() => {
-        leafL.classList.add('leaf-anim');
-        leafR.classList.add('leaf-anim');
-      }, f.delay + 1000);
-
+      // 5. Animations
+      setTimeout(() => { stem.classList.add('grow-stem-anim'); }, f.delay);
+      setTimeout(() => { leafL.classList.add('leaf-anim'); leafR.classList.add('leaf-anim'); }, f.delay + 1000);
       setTimeout(() => { bloom.classList.add('bloom-anim'); }, f.delay + 1500);
-
-      // Sway starts
-      setTimeout(() => {
-        wrapper.classList.add('sway-anim');
-      }, f.delay + 2200);
+      setTimeout(() => { wrapper.classList.add('sway-anim'); }, f.delay + 2200);
     });
   }
 
