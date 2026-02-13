@@ -35,7 +35,7 @@
   <section id="bouquetPage" class="bouquet-page">
     <div class="night-bg"></div>
 
-    <!-- Glass Date Card (auto-filled with today's date) -->
+    <!-- Glass Date Card -->
     <div class="date-card" id="dateCard">
       <div class="date-card-inner">
         <div class="date-month" id="dateMonth"></div>
@@ -54,148 +54,152 @@
       <p class="bouquet-message">This is for you, my love 🤍</p>
     </div>
 
-    <!-- Bouquet -->
-    <div class="bouquet">
+    <!-- ========== BOUQUET ========== -->
+    <div class="bouquet" id="bouquet">
 
-      <!-- Wrapping Paper -->
-      <div class="wrap">
-        <div class="wrap-layer wrap-back"></div>
-        <div class="wrap-layer wrap-left"></div>
-        <div class="wrap-layer wrap-right"></div>
-        <div class="wrap-ribbon"></div>
-        <div class="wrap-bow-left"></div>
-        <div class="wrap-bow-right"></div>
-      </div>
-
-      <!-- ===== FLOWER 1: Big Rose (center) ===== -->
-      <div class="fl fl-rose fl-1">
-        <div class="fl-stem"></div>
-        <div class="fl-leaf fl-leaf-l"></div>
-        <div class="fl-leaf fl-leaf-r"></div>
-        <div class="fl-head">
-          <div class="rose-petal rp-1"></div>
-          <div class="rose-petal rp-2"></div>
-          <div class="rose-petal rp-3"></div>
-          <div class="rose-petal rp-4"></div>
-          <div class="rose-petal rp-5"></div>
-          <div class="rose-inner-1"></div>
-          <div class="rose-inner-2"></div>
-          <div class="rose-center"></div>
+      <!-- FLOWER 1: Big Rose — center -->
+      <div class="stem-wrapper sw-1">
+        <div class="stem"></div>
+        <div class="stem-leaf stem-leaf-l"></div>
+        <div class="stem-leaf stem-leaf-r"></div>
+        <div class="bloom bloom-rose">
+          <div class="rose-p rp1"></div>
+          <div class="rose-p rp2"></div>
+          <div class="rose-p rp3"></div>
+          <div class="rose-p rp4"></div>
+          <div class="rose-p rp5"></div>
+          <div class="rose-inner"></div>
+          <div class="rose-core"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 2: Daisy (left) ===== -->
-      <div class="fl fl-daisy fl-2">
-        <div class="fl-stem"></div>
-        <div class="fl-leaf fl-leaf-l"></div>
-        <div class="fl-head">
-          <div class="daisy-petal dp-1"></div>
-          <div class="daisy-petal dp-2"></div>
-          <div class="daisy-petal dp-3"></div>
-          <div class="daisy-petal dp-4"></div>
-          <div class="daisy-petal dp-5"></div>
-          <div class="daisy-petal dp-6"></div>
-          <div class="daisy-petal dp-7"></div>
-          <div class="daisy-petal dp-8"></div>
-          <div class="daisy-petal dp-9"></div>
-          <div class="daisy-petal dp-10"></div>
-          <div class="daisy-center"></div>
+      <!-- FLOWER 2: Daisy — slight left -->
+      <div class="stem-wrapper sw-2">
+        <div class="stem"></div>
+        <div class="stem-leaf stem-leaf-l"></div>
+        <div class="bloom bloom-daisy">
+          <div class="daisy-p dp1"></div>
+          <div class="daisy-p dp2"></div>
+          <div class="daisy-p dp3"></div>
+          <div class="daisy-p dp4"></div>
+          <div class="daisy-p dp5"></div>
+          <div class="daisy-p dp6"></div>
+          <div class="daisy-p dp7"></div>
+          <div class="daisy-p dp8"></div>
+          <div class="daisy-core"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 3: Tulip (right) ===== -->
-      <div class="fl fl-tulip fl-3">
-        <div class="fl-stem"></div>
-        <div class="fl-leaf fl-leaf-r"></div>
-        <div class="fl-head">
-          <div class="tulip-petal tp-1"></div>
-          <div class="tulip-petal tp-2"></div>
-          <div class="tulip-petal tp-3"></div>
-          <div class="tulip-petal tp-4"></div>
-          <div class="tulip-petal tp-5"></div>
+      <!-- FLOWER 3: Tulip — slight right -->
+      <div class="stem-wrapper sw-3">
+        <div class="stem"></div>
+        <div class="stem-leaf stem-leaf-r"></div>
+        <div class="bloom bloom-tulip">
+          <div class="tulip-p tp1"></div>
+          <div class="tulip-p tp2"></div>
+          <div class="tulip-p tp3"></div>
+          <div class="tulip-p tp4"></div>
+          <div class="tulip-p tp5"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 4: Cherry Blossom (far left) ===== -->
-      <div class="fl fl-cherry fl-4">
-        <div class="fl-stem"></div>
-        <div class="fl-leaf fl-leaf-r"></div>
-        <div class="fl-head">
-          <div class="cherry-petal cp-1"></div>
-          <div class="cherry-petal cp-2"></div>
-          <div class="cherry-petal cp-3"></div>
-          <div class="cherry-petal cp-4"></div>
-          <div class="cherry-petal cp-5"></div>
-          <div class="cherry-center"></div>
-          <div class="cherry-stamen cs-1"></div>
-          <div class="cherry-stamen cs-2"></div>
-          <div class="cherry-stamen cs-3"></div>
+      <!-- FLOWER 4: Sunflower — left -->
+      <div class="stem-wrapper sw-4">
+        <div class="stem"></div>
+        <div class="stem-leaf stem-leaf-r"></div>
+        <div class="bloom bloom-sunflower">
+          <div class="sun-p sp1"></div>
+          <div class="sun-p sp2"></div>
+          <div class="sun-p sp3"></div>
+          <div class="sun-p sp4"></div>
+          <div class="sun-p sp5"></div>
+          <div class="sun-p sp6"></div>
+          <div class="sun-p sp7"></div>
+          <div class="sun-p sp8"></div>
+          <div class="sun-p sp9"></div>
+          <div class="sun-p sp10"></div>
+          <div class="sun-p sp11"></div>
+          <div class="sun-p sp12"></div>
+          <div class="sun-core"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 5: Small Rose (far right) ===== -->
-      <div class="fl fl-rose fl-5">
-        <div class="fl-stem"></div>
-        <div class="fl-leaf fl-leaf-l"></div>
-        <div class="fl-head small-head">
-          <div class="rose-petal rp-1"></div>
-          <div class="rose-petal rp-2"></div>
-          <div class="rose-petal rp-3"></div>
-          <div class="rose-petal rp-4"></div>
-          <div class="rose-inner-1"></div>
-          <div class="rose-center"></div>
+      <!-- FLOWER 5: Cherry Blossom — right -->
+      <div class="stem-wrapper sw-5">
+        <div class="stem"></div>
+        <div class="stem-leaf stem-leaf-l"></div>
+        <div class="bloom bloom-cherry">
+          <div class="cherry-p cp1"></div>
+          <div class="cherry-p cp2"></div>
+          <div class="cherry-p cp3"></div>
+          <div class="cherry-p cp4"></div>
+          <div class="cherry-p cp5"></div>
+          <div class="cherry-core"></div>
+          <div class="cherry-stm cs1"></div>
+          <div class="cherry-stm cs2"></div>
+          <div class="cherry-stm cs3"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 6: Daisy small (center-left) ===== -->
-      <div class="fl fl-daisy fl-6">
-        <div class="fl-stem"></div>
-        <div class="fl-head small-head">
-          <div class="daisy-petal dp-1"></div>
-          <div class="daisy-petal dp-2"></div>
-          <div class="daisy-petal dp-3"></div>
-          <div class="daisy-petal dp-4"></div>
-          <div class="daisy-petal dp-5"></div>
-          <div class="daisy-petal dp-6"></div>
-          <div class="daisy-petal dp-7"></div>
-          <div class="daisy-petal dp-8"></div>
-          <div class="daisy-center"></div>
+      <!-- FLOWER 6: Small Rose — far left -->
+      <div class="stem-wrapper sw-6">
+        <div class="stem"></div>
+        <div class="bloom bloom-rose bloom-sm">
+          <div class="rose-p rp1"></div>
+          <div class="rose-p rp2"></div>
+          <div class="rose-p rp3"></div>
+          <div class="rose-p rp4"></div>
+          <div class="rose-inner"></div>
+          <div class="rose-core"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- ===== FLOWER 7: Tulip small (center-right) ===== -->
-      <div class="fl fl-tulip fl-7">
-        <div class="fl-stem"></div>
-        <div class="fl-head small-head">
-          <div class="tulip-petal tp-1"></div>
-          <div class="tulip-petal tp-2"></div>
-          <div class="tulip-petal tp-3"></div>
-          <div class="tulip-petal tp-4"></div>
+      <!-- FLOWER 7: Small Sunflower — far right -->
+      <div class="stem-wrapper sw-7">
+        <div class="stem"></div>
+        <div class="bloom bloom-sunflower bloom-sm">
+          <div class="sun-p sp1"></div>
+          <div class="sun-p sp2"></div>
+          <div class="sun-p sp3"></div>
+          <div class="sun-p sp4"></div>
+          <div class="sun-p sp5"></div>
+          <div class="sun-p sp6"></div>
+          <div class="sun-p sp7"></div>
+          <div class="sun-p sp8"></div>
+          <div class="sun-p sp9"></div>
+          <div class="sun-p sp10"></div>
+          <div class="sun-core"></div>
         </div>
-        <div class="fl-glow"></div>
       </div>
 
-      <!-- Baby's Breath clusters -->
-      <div class="babys-breath bb-1">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="babys-breath bb-2">
-        <span></span><span></span><span></span><span></span>
-      </div>
-      <div class="babys-breath bb-3">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="babys-breath bb-4">
-        <span></span><span></span><span></span>
+      <!-- FLOWER 8: Lavender sprig — far left accent -->
+      <div class="stem-wrapper sw-8">
+        <div class="stem"></div>
+        <div class="bloom bloom-lavender">
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+        </div>
       </div>
 
-      <!-- Floating particles -->
+      <!-- FLOWER 9: Lavender sprig — far right accent -->
+      <div class="stem-wrapper sw-9">
+        <div class="stem"></div>
+        <div class="bloom bloom-lavender">
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+          <span class="lav-dot"></span><span class="lav-dot"></span>
+        </div>
+      </div>
+
+      <!-- Baby's Breath -->
+      <div class="bb bb-1"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="bb bb-2"><span></span><span></span><span></span><span></span></div>
+      <div class="bb bb-3"><span></span><span></span><span></span><span></span><span></span></div>
+
+      <!-- Particles -->
       <div class="particles" id="particles"></div>
     </div>
   </section>

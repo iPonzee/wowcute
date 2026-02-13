@@ -2,171 +2,153 @@
 // Valentine's Day Website — JS
 // ============================
 document.addEventListener('DOMContentLoaded', () => {
-  // ---- Populate Date Card with today's date ----
+  // ---- Date Card ----
   const now = new Date();
   const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
   const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
   document.getElementById('dateMonth').textContent = months[now.getMonth()];
   document.getElementById('dateDay').textContent = now.getDate();
   document.getElementById('dateYear').textContent = now.getFullYear();
   document.getElementById('dateWeekday').textContent = weekdays[now.getDay()];
 
-  // ---- Element References ----
   const landing = document.getElementById('landing');
   const bouquetPage = document.getElementById('bouquetPage');
   const revealBtn = document.getElementById('revealBtn');
   const heartsContainer = document.getElementById('heartsContainer');
   const particlesEl = document.getElementById('particles');
 
-  // ---- Floating Hearts on Landing ----
+  // ---- Floating Hearts ----
   const heartEmojis = ['💕', '💗', '💖', '💝', '🩷', '🤍', '♡'];
-
   function createHeart() {
-    const heart = document.createElement('span');
-    heart.className = 'floating-heart';
-    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-    heart.style.left = Math.random() * 100 + '%';
-    heart.style.fontSize = (14 + Math.random() * 20) + 'px';
-    heart.style.animationDuration = (6 + Math.random() * 6) + 's';
-    heart.style.animationDelay = (Math.random() * 2) + 's';
-    heartsContainer.appendChild(heart);
-    setTimeout(() => heart.remove(), 14000);
+    const h = document.createElement('span');
+    h.className = 'floating-heart';
+    h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    h.style.left = Math.random() * 100 + '%';
+    h.style.fontSize = (14 + Math.random() * 20) + 'px';
+    h.style.animationDuration = (6 + Math.random() * 6) + 's';
+    h.style.animationDelay = (Math.random() * 2) + 's';
+    heartsContainer.appendChild(h);
+    setTimeout(() => h.remove(), 14000);
   }
-
-  const heartInterval = setInterval(createHeart, 600);
+  const heartInt = setInterval(createHeart, 600);
   for (let i = 0; i < 6; i++) setTimeout(createHeart, i * 350);
 
-  // ---- Reveal Button ----
+  // ---- Reveal ----
   revealBtn.addEventListener('click', () => {
-    clearInterval(heartInterval);
+    clearInterval(heartInt);
     landing.classList.add('hidden');
-
     setTimeout(() => {
       bouquetPage.classList.add('visible');
-      growFlowers();
+      growBouquet();
       startParticles();
     }, 600);
-
     setTimeout(() => { landing.style.display = 'none'; }, 1800);
   });
 
   // ============================
-  // GROW FLOWERS — smooth sequential
+  // GROW BOUQUET — stems fan out from center
   // ============================
-  function growFlowers() {
-    // Flower configs — tall stems, fanned out
+  function growBouquet() {
+    /*
+     * Each flower config:
+     *  sel   = CSS selector for the stem-wrapper
+     *  h     = stem height in px
+     *  angle = rotation angle (set via CSS, used for sway)
+     *  leafY = leaf position from bottom
+     *  delay = start delay in ms
+     *  sway  = sway class
+     */
     const flowers = [
-      // Center rose — tallest
-      { el: '.fl-1', stemH: 340, leafPos: 160, delay: 100, sway: 'sway-1' },
-      // Left daisy
-      { el: '.fl-2', stemH: 300, leafPos: 140, delay: 400, sway: 'sway-2' },
-      // Right tulip
-      { el: '.fl-3', stemH: 280, leafPos: 120, delay: 600, sway: 'sway-3' },
-      // Far left cherry blossom
-      { el: '.fl-4', stemH: 260, leafPos: 110, delay: 900, sway: 'sway-4' },
-      // Far right small rose
-      { el: '.fl-5', stemH: 250, leafPos: 100, delay: 1100, sway: 'sway-5' },
-      // Inner-left small daisy
-      { el: '.fl-6', stemH: 310, leafPos: 150, delay: 700, sway: 'sway-2' },
-      // Inner-right small tulip
-      { el: '.fl-7', stemH: 320, leafPos: 155, delay: 800, sway: 'sway-3' },
+      { sel: '.sw-1', h: 380, angle: 0, leafY: 180, delay: 0, sway: 'sway-a' }, // center rose
+      { sel: '.sw-2', h: 340, angle: -12, leafY: 160, delay: 300, sway: 'sway-b' }, // daisy
+      { sel: '.sw-3', h: 320, angle: 10, leafY: 150, delay: 500, sway: 'sway-a' }, // tulip
+      { sel: '.sw-4', h: 300, angle: -25, leafY: 140, delay: 800, sway: 'sway-c' }, // sunflower
+      { sel: '.sw-5', h: 310, angle: 22, leafY: 145, delay: 700, sway: 'sway-b' }, // cherry
+      { sel: '.sw-6', h: 260, angle: -36, leafY: 120, delay: 1000, sway: 'sway-a' }, // small rose
+      { sel: '.sw-7', h: 270, angle: 34, leafY: 125, delay: 1100, sway: 'sway-c' }, // small sunflower
+      { sel: '.sw-8', h: 240, angle: -44, leafY: 0, delay: 1300, sway: 'sway-b' }, // lavender
+      { sel: '.sw-9', h: 250, angle: 42, leafY: 0, delay: 1400, sway: 'sway-c' }, // lavender
     ];
 
     flowers.forEach(f => {
-      const flEl = document.querySelector(f.el);
-      if (!flEl) return;
+      const wrapper = document.querySelector(f.sel);
+      if (!wrapper) return;
 
-      const stem = flEl.querySelector('.fl-stem');
-      const leaves = flEl.querySelectorAll('.fl-leaf');
-      const head = flEl.querySelector('.fl-head');
-      const glow = flEl.querySelector('.fl-glow');
+      const stem = wrapper.querySelector('.stem');
+      const leaves = wrapper.querySelectorAll('.stem-leaf');
+      const bloom = wrapper.querySelector('.bloom');
 
-      // Set stem height as CSS variable for the animation
-      stem.style.setProperty('--stem-h', f.stemH + 'px');
+      // Store the rotation angle for sway
+      wrapper.style.setProperty('--r', f.angle + 'deg');
 
-      // Position head at top of (future) stem
-      if (head) {
-        head.style.top = (-f.stemH) + 'px';
+      // Set stem height variable
+      stem.style.setProperty('--h', f.h + 'px');
+
+      // Position bloom at top of stem
+      if (bloom) {
+        bloom.style.top = (-f.h) + 'px';
       }
-      if (glow) {
-        glow.style.top = (-f.stemH - 25) + 'px';
-      }
 
-      // Position leaves along the stem
+      // Position leaves
       leaves.forEach(leaf => {
-        leaf.style.bottom = f.leafPos + 'px';
+        leaf.style.bottom = f.leafY + 'px';
       });
 
-      // Step 1: Grow stem smoothly
+      // Step 1: Grow stem
       setTimeout(() => {
         stem.classList.add('stem-grow');
       }, f.delay);
 
-      // Step 2: Sprout leaves (when stem is ~60% grown)
-      setTimeout(() => {
-        leaves.forEach(leaf => {
-          leaf.classList.add(
-            leaf.classList.contains('fl-leaf-l') ? 'leaf-grow-l' : 'leaf-grow-r'
-          );
-        });
-      }, f.delay + 1400);
+      // Step 2: Leaves
+      if (f.leafY > 0) {
+        setTimeout(() => {
+          leaves.forEach(leaf => {
+            leaf.classList.add(
+              leaf.classList.contains('stem-leaf-l') ? 'leaf-in-l' : 'leaf-in-r'
+            );
+          });
+        }, f.delay + 1600);
+      }
 
-      // Step 3: Bloom flower head (when stem finishes)
+      // Step 3: Bloom
       setTimeout(() => {
-        if (head) head.classList.add('head-bloom');
+        if (bloom) bloom.classList.add('bloom-in');
       }, f.delay + 2000);
 
-      // Step 4: Show glow halo
+      // Step 4: Sway (use the stored angle)
       setTimeout(() => {
-        if (glow) glow.classList.add('glow-show');
-      }, f.delay + 2600);
-
-      // Step 5: Start gentle swaying
-      setTimeout(() => {
-        flEl.classList.add(f.sway);
+        wrapper.classList.add(f.sway);
       }, f.delay + 2800);
     });
 
-    // Baby's breath pops in after all flowers bloom
+    // Baby's breath
     setTimeout(() => {
-      document.querySelectorAll('.babys-breath').forEach(bb => {
-        bb.classList.add('bb-visible');
-      });
+      document.querySelectorAll('.bb').forEach(bb => bb.classList.add('bb-show'));
     }, 3800);
   }
 
   // ============================
-  // GLOWING PARTICLES
+  // PARTICLE SYSTEM
   // ============================
   function startParticles() {
     const colors = [
-      'rgba(248,187,208,0.7)',
-      'rgba(255,224,178,0.5)',
-      'rgba(206,147,216,0.5)',
-      'rgba(255,255,255,0.6)',
-      'rgba(244,143,177,0.4)',
+      'rgba(248,187,208,.7)', 'rgba(255,224,178,.5)',
+      'rgba(206,147,216,.5)', 'rgba(255,255,255,.6)',
     ];
-
-    function spawnParticle() {
+    function spawn() {
       const p = document.createElement('div');
       p.className = 'particle';
-      const size = 3 + Math.random() * 5;
-      p.style.width = size + 'px';
-      p.style.height = size + 'px';
-      p.style.left = (15 + Math.random() * 70) + '%';
-      p.style.bottom = (10 + Math.random() * 30) + '%';
+      const sz = 3 + Math.random() * 5;
+      p.style.width = sz + 'px'; p.style.height = sz + 'px';
+      p.style.left = (20 + Math.random() * 60) + '%';
+      p.style.bottom = (5 + Math.random() * 30) + '%';
       p.style.background = colors[Math.floor(Math.random() * colors.length)];
       p.style.animationDuration = (4 + Math.random() * 5) + 's';
       p.style.boxShadow = '0 0 ' + (4 + Math.random() * 8) + 'px ' + p.style.background;
       particlesEl.appendChild(p);
       setTimeout(() => p.remove(), 10000);
     }
-
-    // Delayed start — particles appear once flowers are growing
-    for (let i = 0; i < 8; i++) {
-      setTimeout(spawnParticle, 2500 + i * 250);
-    }
-    setInterval(spawnParticle, 600);
+    for (let i = 0; i < 8; i++) setTimeout(spawn, 2500 + i * 250);
+    setInterval(spawn, 600);
   }
 });
