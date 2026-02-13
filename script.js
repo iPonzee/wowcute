@@ -52,18 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================
-  // GROW FLOWERS — sequential animation
+  // GROW FLOWERS — smooth sequential
   // ============================
   function growFlowers() {
-    // Define each flower's config
+    // Flower configs — tall stems, fanned out
     const flowers = [
-      { el: '.fl-1', stemH: 250, leafPos: 120, delay: 200, sway: 'sway-1' },
-      { el: '.fl-2', stemH: 220, leafPos: 100, delay: 500, sway: 'sway-2' },
-      { el: '.fl-3', stemH: 210, leafPos: 90, delay: 700, sway: 'sway-3' },
-      { el: '.fl-4', stemH: 180, leafPos: 80, delay: 1000, sway: 'sway-4' },
-      { el: '.fl-5', stemH: 170, leafPos: 70, delay: 1200, sway: 'sway-5' },
-      { el: '.fl-6', stemH: 230, leafPos: 100, delay: 900, sway: 'sway-2' },
-      { el: '.fl-7', stemH: 240, leafPos: 110, delay: 1100, sway: 'sway-3' },
+      // Center rose — tallest
+      { el: '.fl-1', stemH: 340, leafPos: 160, delay: 100, sway: 'sway-1' },
+      // Left daisy
+      { el: '.fl-2', stemH: 300, leafPos: 140, delay: 400, sway: 'sway-2' },
+      // Right tulip
+      { el: '.fl-3', stemH: 280, leafPos: 120, delay: 600, sway: 'sway-3' },
+      // Far left cherry blossom
+      { el: '.fl-4', stemH: 260, leafPos: 110, delay: 900, sway: 'sway-4' },
+      // Far right small rose
+      { el: '.fl-5', stemH: 250, leafPos: 100, delay: 1100, sway: 'sway-5' },
+      // Inner-left small daisy
+      { el: '.fl-6', stemH: 310, leafPos: 150, delay: 700, sway: 'sway-2' },
+      // Inner-right small tulip
+      { el: '.fl-7', stemH: 320, leafPos: 155, delay: 800, sway: 'sway-3' },
     ];
 
     flowers.forEach(f => {
@@ -75,65 +82,58 @@ document.addEventListener('DOMContentLoaded', () => {
       const head = flEl.querySelector('.fl-head');
       const glow = flEl.querySelector('.fl-glow');
 
-      // Set stem target height as CSS variable
+      // Set stem height as CSS variable for the animation
       stem.style.setProperty('--stem-h', f.stemH + 'px');
 
-      // Position the flower head at top of stem
+      // Position head at top of (future) stem
       if (head) {
-        head.style.top = '0px';
-        head.style.bottom = 'auto';
-        // Position relative to the stem — head goes at top
         head.style.top = (-f.stemH) + 'px';
-        head.style.bottom = 'auto';
-        head.style.position = 'absolute';
       }
       if (glow) {
-        glow.style.top = (-f.stemH - 20) + 'px';
+        glow.style.top = (-f.stemH - 25) + 'px';
       }
 
-      // Position leaves along stem
+      // Position leaves along the stem
       leaves.forEach(leaf => {
         leaf.style.bottom = f.leafPos + 'px';
       });
 
-      // Step 1: Grow stem
+      // Step 1: Grow stem smoothly
       setTimeout(() => {
         stem.classList.add('stem-grow');
       }, f.delay);
 
-      // Step 2: Sprout leaves (after stem grows)
+      // Step 2: Sprout leaves (when stem is ~60% grown)
       setTimeout(() => {
         leaves.forEach(leaf => {
-          if (leaf.classList.contains('fl-leaf-l')) {
-            leaf.classList.add('leaf-grow-l');
-          } else {
-            leaf.classList.add('leaf-grow-r');
-          }
+          leaf.classList.add(
+            leaf.classList.contains('fl-leaf-l') ? 'leaf-grow-l' : 'leaf-grow-r'
+          );
         });
       }, f.delay + 1400);
 
-      // Step 3: Bloom flower head
+      // Step 3: Bloom flower head (when stem finishes)
       setTimeout(() => {
         if (head) head.classList.add('head-bloom');
-      }, f.delay + 1600);
-
-      // Step 4: Show glow
-      setTimeout(() => {
-        if (glow) glow.classList.add('glow-show');
       }, f.delay + 2000);
 
-      // Step 5: Start swaying
+      // Step 4: Show glow halo
+      setTimeout(() => {
+        if (glow) glow.classList.add('glow-show');
+      }, f.delay + 2600);
+
+      // Step 5: Start gentle swaying
       setTimeout(() => {
         flEl.classList.add(f.sway);
-      }, f.delay + 2200);
+      }, f.delay + 2800);
     });
 
-    // Baby's breath appears after flowers
+    // Baby's breath pops in after all flowers bloom
     setTimeout(() => {
       document.querySelectorAll('.babys-breath').forEach(bb => {
         bb.classList.add('bb-visible');
       });
-    }, 3200);
+    }, 3800);
   }
 
   // ============================
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function startParticles() {
     const colors = [
       'rgba(248,187,208,0.7)',
-      'rgba(255,224,178,0.6)',
+      'rgba(255,224,178,0.5)',
       'rgba(206,147,216,0.5)',
       'rgba(255,255,255,0.6)',
-      'rgba(244,143,177,0.5)',
+      'rgba(244,143,177,0.4)',
     ];
 
     function spawnParticle() {
@@ -155,17 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
       p.style.width = size + 'px';
       p.style.height = size + 'px';
       p.style.left = (15 + Math.random() * 70) + '%';
-      p.style.bottom = (5 + Math.random() * 25) + '%';
+      p.style.bottom = (10 + Math.random() * 30) + '%';
       p.style.background = colors[Math.floor(Math.random() * colors.length)];
-      p.style.animationDuration = (3 + Math.random() * 4) + 's';
-      p.style.boxShadow = '0 0 ' + (4 + Math.random() * 6) + 'px ' + p.style.background;
+      p.style.animationDuration = (4 + Math.random() * 5) + 's';
+      p.style.boxShadow = '0 0 ' + (4 + Math.random() * 8) + 'px ' + p.style.background;
       particlesEl.appendChild(p);
-      setTimeout(() => p.remove(), 8000);
+      setTimeout(() => p.remove(), 10000);
     }
 
-    for (let i = 0; i < 10; i++) {
-      setTimeout(spawnParticle, 2000 + i * 200);
+    // Delayed start — particles appear once flowers are growing
+    for (let i = 0; i < 8; i++) {
+      setTimeout(spawnParticle, 2500 + i * 250);
     }
-    setInterval(spawnParticle, 500);
+    setInterval(spawnParticle, 600);
   }
 });

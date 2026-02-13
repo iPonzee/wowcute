@@ -270,7 +270,7 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(248, 187, 208, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(248, 187, 208, 0.08) 0%, transparent 45%),
     radial-gradient(ellipse at 50% 0%, transparent 0%, var(--bg) 70%),
     linear-gradient(180deg, #1a0c20, var(--bg));
 }
@@ -281,7 +281,7 @@ body {
    ============================================= */
 .date-card {
   position: fixed;
-  left: clamp(20px, 5vw, 60px);
+  left: clamp(20px, 4vw, 50px);
   top: 50%;
   transform: translateY(-50%) translateX(-100px);
   opacity: 0;
@@ -295,15 +295,15 @@ body {
 }
 
 .date-card-inner {
-  padding: 36px 30px;
+  padding: 32px 26px;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 28px;
+  border-radius: 24px;
   text-align: center;
-  min-width: 150px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+  min-width: 130px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: cardBreath 4s ease-in-out infinite;
 }
 
@@ -321,16 +321,16 @@ body {
 
 .date-month {
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: rgba(248, 187, 208, 0.8);
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .date-day-number {
   font-family: 'Playfair Display', serif;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
   color: var(--pink-1);
   line-height: 1;
@@ -340,22 +340,22 @@ body {
 
 .date-year {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 400;
   color: rgba(248, 187, 208, 0.5);
   letter-spacing: 3px;
 }
 
 .date-divider {
-  width: 50px;
+  width: 40px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(248, 187, 208, 0.25), transparent);
-  margin: 16px auto;
+  margin: 14px auto;
 }
 
 .date-weekday {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: rgba(248, 187, 208, 0.45);
   letter-spacing: 2px;
@@ -367,7 +367,7 @@ body {
    ============================================= */
 .bouquet-title-wrap {
   position: fixed;
-  top: clamp(24px, 5vh, 60px);
+  top: clamp(20px, 4vh, 50px);
   left: 50%;
   transform: translateX(-50%) translateY(-30px);
   text-align: center;
@@ -383,7 +383,7 @@ body {
 
 .greetings {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-size: clamp(1.4rem, 3.5vw, 2.5rem);
   font-weight: 700;
   display: inline-block;
 }
@@ -500,36 +500,37 @@ body {
 }
 
 .bouquet-message {
-  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
   color: rgba(248, 187, 208, 0.45);
   font-weight: 300;
-  margin-top: 8px;
+  margin-top: 6px;
   letter-spacing: 0.5px;
 }
 
 
 /* =============================================
-   BOUQUET CONTAINER
+   BOUQUET — LARGE, fills the screen
    ============================================= */
 .bouquet {
   position: relative;
-  width: clamp(300px, 60vw, 500px);
-  height: clamp(420px, 75vh, 620px);
+  width: 90vw;
+  max-width: 800px;
+  height: 80vh;
   z-index: 10;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 
 /* =============================================
-   WRAPPING PAPER
+   WRAPPING PAPER — big and centered at bottom
    ============================================= */
 .wrap {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 220px;
+  width: 240px;
+  height: 260px;
   z-index: 20;
   opacity: 0;
   animation: fadeWrap 1s 0.3s ease forwards;
@@ -549,50 +550,50 @@ body {
 .wrap-back {
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;
-  height: 200px;
+  width: 220px;
+  height: 240px;
   background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 50%, #ec407a 100%);
-  border-radius: 8px 8px 30px 30px;
-  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  border-radius: 8px 8px 36px 36px;
+  clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
 }
 
 .wrap-left {
-  left: 10px;
-  width: 100px;
-  height: 190px;
+  left: 8px;
+  width: 130px;
+  height: 228px;
   background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 100%);
-  clip-path: polygon(40% 0%, 100% 0%, 80% 100%, 0% 100%);
-  border-radius: 0 0 0 20px;
+  clip-path: polygon(40% 0%, 100% 0%, 78% 100%, 0% 100%);
+  border-radius: 0 0 0 28px;
 }
 
 .wrap-right {
-  right: 10px;
-  width: 100px;
-  height: 190px;
+  right: 8px;
+  width: 130px;
+  height: 228px;
   background: linear-gradient(200deg, #e1bee7 0%, #ce93d8 100%);
-  clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 20% 100%);
-  border-radius: 0 0 20px 0;
+  clip-path: polygon(0% 0%, 60% 0%, 100% 100%, 22% 100%);
+  border-radius: 0 0 28px 0;
 }
 
 .wrap-ribbon {
   position: absolute;
-  top: 20px;
+  top: 22px;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   background: radial-gradient(circle, #ffe082, #ffcc80);
   border-radius: 50%;
   z-index: 25;
-  box-shadow: 0 2px 12px rgba(255, 204, 128, 0.5);
+  box-shadow: 0 2px 16px rgba(255, 204, 128, 0.6);
 }
 
 .wrap-bow-left,
 .wrap-bow-right {
   position: absolute;
-  top: 16px;
-  width: 32px;
-  height: 22px;
+  top: 18px;
+  width: 36px;
+  height: 24px;
   z-index: 24;
   border-radius: 50%;
   background: rgba(255, 224, 178, 0.7);
@@ -600,67 +601,63 @@ body {
 }
 
 .wrap-bow-left {
-  left: calc(50% - 40px);
+  left: calc(50% - 44px);
   transform: rotate(-25deg);
 }
 
 .wrap-bow-right {
-  right: calc(50% - 40px);
+  right: calc(50% - 44px);
   transform: rotate(25deg);
 }
 
 
 /* =============================================
-   FLOWER SHARED STYLES
+   FLOWER BASE — large sizes
    ============================================= */
-
-/* Each flower uses a wrapper div for positioning,
-   and a separate animation for sway that only uses rotate.
-   We use left + margin-left for centering instead of translateX(-50%). */
-
 .fl {
   position: absolute;
-  bottom: 100px;
+  bottom: 140px;
+  /* stems start above the wrapping paper */
   width: 0;
-  /* anchor point */
   transform-origin: bottom center;
 }
 
-/* Stems grow upward */
+/* Stems */
 .fl-stem {
   position: absolute;
   bottom: 0;
-  left: -2px;
-  width: 4px;
+  left: -3px;
+  width: 5px;
   height: 0;
   background: linear-gradient(to top, var(--stem-dark), var(--stem));
-  border-radius: 2px;
+  border-radius: 3px;
   transform-origin: bottom center;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Leaves sprout from stem */
+/* Leaves — bigger */
 .fl-leaf {
   position: absolute;
-  width: 28px;
-  height: 14px;
-  background: linear-gradient(135deg, var(--leaf), var(--stem));
+  width: 40px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--leaf), var(--stem-dark));
   transform-origin: bottom center;
   opacity: 0;
+  border-radius: 0 50% 0 50%;
 }
 
 .fl-leaf-l {
-  right: 2px;
+  right: 3px;
   border-radius: 50% 0 50% 0;
-  transform: rotate(25deg) scale(0);
+  transform: rotate(30deg) scale(0);
 }
 
 .fl-leaf-r {
-  left: 2px;
-  border-radius: 0 50% 0 50%;
-  transform: rotate(-25deg) scale(0);
+  left: 3px;
+  transform: rotate(-30deg) scale(0);
 }
 
-/* Flower heads bloom from center */
+/* Flower heads */
 .fl-head {
   position: absolute;
   left: 0;
@@ -672,26 +669,24 @@ body {
   transform: translate(-50%, -50%) scale(0);
 }
 
-/* Glow beneath each flower */
+/* Glow */
 .fl-glow {
   position: absolute;
-  left: -30px;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, rgba(248, 187, 208, 0.3) 0%, transparent 70%);
+  left: -40px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(248, 187, 208, 0.35) 0%, transparent 70%);
   border-radius: 50%;
-  filter: blur(8px);
+  filter: blur(10px);
   opacity: 0;
 }
 
 
 /* =============================================
-   ANIMATION CLASSES — added by JS
+   GROW ANIMATIONS — smooth & elegant
    ============================================= */
-
-/* Stem grow */
 .stem-grow {
-  animation: growStem 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: growStem 2.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
 @keyframes growStem {
@@ -704,75 +699,82 @@ body {
   }
 }
 
-/* Leaf sprout */
 .leaf-grow-l {
-  animation: leafGrowL 0.6s ease forwards;
+  animation: leafGrowL 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .leaf-grow-r {
-  animation: leafGrowR 0.6s ease forwards;
+  animation: leafGrowR 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes leafGrowL {
   0% {
     opacity: 0;
-    transform: rotate(25deg) scale(0);
+    transform: rotate(30deg) scale(0);
   }
 
   100% {
     opacity: 1;
-    transform: rotate(25deg) scale(1);
+    transform: rotate(30deg) scale(1);
   }
 }
 
 @keyframes leafGrowR {
   0% {
     opacity: 0;
-    transform: rotate(-25deg) scale(0);
+    transform: rotate(-30deg) scale(0);
   }
 
   100% {
     opacity: 1;
-    transform: rotate(-25deg) scale(1);
+    transform: rotate(-30deg) scale(1);
   }
 }
 
-/* Head bloom */
 .head-bloom {
-  animation: headBloom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: headBloom 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .head-bloom.small-head {
-  animation: headBloomSmall 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: headBloomSmall 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes headBloom {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
   }
 
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
   }
 }
 
 @keyframes headBloomSmall {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.82) rotate(3deg);
   }
 
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.75) rotate(0deg);
   }
 }
 
-/* Glow appear */
 .glow-show {
-  animation: glowAppear 1s ease forwards, glowPulse 3s 1s ease-in-out infinite;
+  animation: glowAppear 1.2s ease forwards, glowPulse 3s 1.2s ease-in-out infinite;
 }
 
 @keyframes glowAppear {
@@ -789,7 +791,7 @@ body {
 
   0%,
   100% {
-    opacity: 0.6;
+    opacity: 0.5;
     transform: scale(1);
   }
 
@@ -799,25 +801,25 @@ body {
   }
 }
 
-/* Sway — only uses rotate, no translate conflicts */
+/* Sway — gentle continuous */
 .sway-1 {
-  animation: sway1 4s ease-in-out infinite;
+  animation: sway1 5s ease-in-out infinite;
 }
 
 .sway-2 {
-  animation: sway2 3.5s ease-in-out infinite;
+  animation: sway2 4.5s ease-in-out infinite;
 }
 
 .sway-3 {
-  animation: sway3 3.8s ease-in-out infinite;
+  animation: sway3 4.8s ease-in-out infinite;
 }
 
 .sway-4 {
-  animation: sway4 4.2s ease-in-out infinite;
+  animation: sway4 5.2s ease-in-out infinite;
 }
 
 .sway-5 {
-  animation: sway5 3.6s ease-in-out infinite;
+  animation: sway5 4.6s ease-in-out infinite;
 }
 
 @keyframes sway1 {
@@ -827,12 +829,12 @@ body {
     transform: rotate(0deg);
   }
 
-  33% {
-    transform: rotate(3deg);
+  25% {
+    transform: rotate(2deg);
   }
 
-  66% {
-    transform: rotate(-3deg);
+  75% {
+    transform: rotate(-2deg);
   }
 }
 
@@ -840,15 +842,15 @@ body {
 
   0%,
   100% {
-    transform: rotate(-10deg);
+    transform: rotate(-8deg);
   }
 
-  33% {
-    transform: rotate(-7deg);
+  25% {
+    transform: rotate(-5deg);
   }
 
-  66% {
-    transform: rotate(-13deg);
+  75% {
+    transform: rotate(-11deg);
   }
 }
 
@@ -856,15 +858,15 @@ body {
 
   0%,
   100% {
-    transform: rotate(8deg);
+    transform: rotate(7deg);
   }
 
-  33% {
-    transform: rotate(11deg);
+  25% {
+    transform: rotate(10deg);
   }
 
-  66% {
-    transform: rotate(5deg);
+  75% {
+    transform: rotate(4deg);
   }
 }
 
@@ -872,15 +874,15 @@ body {
 
   0%,
   100% {
-    transform: rotate(-18deg);
+    transform: rotate(-16deg);
   }
 
-  33% {
-    transform: rotate(-15deg);
+  25% {
+    transform: rotate(-13deg);
   }
 
-  66% {
-    transform: rotate(-21deg);
+  75% {
+    transform: rotate(-19deg);
   }
 }
 
@@ -888,164 +890,165 @@ body {
 
   0%,
   100% {
-    transform: rotate(15deg);
+    transform: rotate(13deg);
   }
 
-  33% {
-    transform: rotate(18deg);
+  25% {
+    transform: rotate(16deg);
   }
 
-  66% {
-    transform: rotate(12deg);
+  75% {
+    transform: rotate(10deg);
   }
 }
 
 
 /* =============================================
-   FLOWER POSITIONS
+   FLOWER POSITIONS — fanned out wide
    ============================================= */
 .fl-1 {
   left: 50%;
   z-index: 15;
 }
 
-/* center */
+/* center tall */
 .fl-2 {
-  left: 30%;
+  left: 32%;
   z-index: 14;
 }
 
-/* left */
+/* mid-left */
 .fl-3 {
-  left: 70%;
+  left: 68%;
   z-index: 14;
 }
 
-/* right */
+/* mid-right */
 .fl-4 {
-  left: 18%;
+  left: 16%;
   z-index: 13;
 }
 
 /* far left */
 .fl-5 {
-  left: 82%;
+  left: 84%;
   z-index: 13;
 }
 
 /* far right */
 .fl-6 {
-  left: 40%;
+  left: 42%;
   z-index: 12;
 }
 
-/* center-left */
+/* inner-left */
 .fl-7 {
-  left: 60%;
+  left: 58%;
   z-index: 12;
 }
 
-/* center-right */
+/* inner-right */
 
 
 /* =============================================
-   ROSE PETALS
+   ROSE — bigger petals
    ============================================= */
 .fl-rose .fl-head {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 
 .rose-petal {
   position: absolute;
-  width: 28px;
-  height: 32px;
-  border-radius: 50% 50% 40% 40%;
+  width: 36px;
+  height: 42px;
+  border-radius: 50% 50% 42% 42%;
   top: 50%;
   left: 50%;
+  box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.08);
 }
 
 .rp-1 {
-  background: var(--pink-2);
-  transform: translate(-50%, -55%) rotate(0deg);
+  background: linear-gradient(160deg, var(--pink-1), var(--pink-2));
+  transform: translate(-50%, -56%) rotate(0deg);
 }
 
 .rp-2 {
-  background: var(--pink-3);
-  transform: translate(-50%, -55%) rotate(72deg);
+  background: linear-gradient(160deg, var(--pink-2), var(--pink-3));
+  transform: translate(-50%, -56%) rotate(72deg);
 }
 
 .rp-3 {
-  background: var(--pink-2);
-  transform: translate(-50%, -55%) rotate(144deg);
+  background: linear-gradient(160deg, var(--pink-1), var(--pink-2));
+  transform: translate(-50%, -56%) rotate(144deg);
 }
 
 .rp-4 {
-  background: var(--pink-3);
-  transform: translate(-50%, -55%) rotate(216deg);
+  background: linear-gradient(160deg, var(--pink-2), var(--pink-3));
+  transform: translate(-50%, -56%) rotate(216deg);
 }
 
 .rp-5 {
-  background: var(--pink-2);
-  transform: translate(-50%, -55%) rotate(288deg);
+  background: linear-gradient(160deg, var(--pink-1), var(--pink-2));
+  transform: translate(-50%, -56%) rotate(288deg);
 }
 
 .rose-inner-1 {
   position: absolute;
-  width: 20px;
-  height: 22px;
+  width: 26px;
+  height: 28px;
   border-radius: 50% 50% 40% 40%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%) rotate(36deg);
-  background: var(--pink-1);
-  opacity: 0.85;
+  background: linear-gradient(to top, var(--pink-2), var(--pink-1));
+  opacity: 0.9;
 }
 
 .rose-inner-2 {
   position: absolute;
-  width: 16px;
-  height: 18px;
+  width: 20px;
+  height: 22px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%) rotate(108deg);
   background: var(--blush);
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .rose-center {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
   background: radial-gradient(circle, var(--blush), var(--pink-1));
   z-index: 3;
-  box-shadow: 0 0 10px rgba(248, 187, 208, 0.5);
+  box-shadow: 0 0 14px rgba(248, 187, 208, 0.6);
 }
 
 
 /* =============================================
-   DAISY PETALS
+   DAISY — bigger
    ============================================= */
 .fl-daisy .fl-head {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
 }
 
 .daisy-petal {
   position: absolute;
-  width: 12px;
-  height: 22px;
-  background: var(--pink-1);
+  width: 14px;
+  height: 28px;
+  background: linear-gradient(to top, var(--pink-2), var(--pink-1));
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform-origin: center;
-  box-shadow: inset 0 0 4px rgba(248, 187, 208, 0.3);
+  box-shadow: inset 0 0 5px rgba(248, 187, 208, 0.25);
 }
 
 .dp-1 {
@@ -1090,31 +1093,31 @@ body {
 
 .daisy-center {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, var(--cream), #ffcc80);
   z-index: 2;
-  box-shadow: 0 0 8px rgba(255, 204, 128, 0.5);
+  box-shadow: 0 0 10px rgba(255, 204, 128, 0.6);
 }
 
 
 /* =============================================
-   TULIP PETALS
+   TULIP — bigger
    ============================================= */
 .fl-tulip .fl-head {
-  width: 40px;
-  height: 50px;
+  width: 50px;
+  height: 60px;
 }
 
 .tulip-petal {
   position: absolute;
   bottom: 0;
-  width: 20px;
-  height: 40px;
+  width: 24px;
+  height: 50px;
   border-radius: 50% 50% 8% 8%;
 }
 
@@ -1126,77 +1129,78 @@ body {
 }
 
 .tp-2 {
-  left: 2px;
-  transform: rotate(-10deg);
+  left: 3px;
+  transform: rotate(-12deg);
   background: linear-gradient(to top, var(--pink-4), var(--pink-2));
   z-index: 2;
 }
 
 .tp-3 {
-  right: 2px;
-  transform: rotate(10deg);
+  right: 3px;
+  transform: rotate(12deg);
   background: linear-gradient(to top, var(--pink-4), var(--pink-2));
   z-index: 2;
 }
 
 .tp-4 {
-  left: -2px;
-  transform: rotate(-18deg);
+  left: -3px;
+  transform: rotate(-20deg);
   background: linear-gradient(to top, var(--lavender-3), var(--lavender-1));
   z-index: 1;
 }
 
 .tp-5 {
-  right: -2px;
-  transform: rotate(18deg);
+  right: -3px;
+  transform: rotate(20deg);
   background: linear-gradient(to top, var(--lavender-3), var(--lavender-1));
   z-index: 1;
 }
 
 
 /* =============================================
-   CHERRY BLOSSOM PETALS
+   CHERRY BLOSSOM — bigger
    ============================================= */
 .fl-cherry .fl-head {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
 }
 
 .cherry-petal {
   position: absolute;
-  width: 20px;
-  height: 24px;
+  width: 26px;
+  height: 30px;
   top: 50%;
   left: 50%;
   border-radius: 50% 50% 50% 0%;
   background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
-  opacity: 0.9;
+  opacity: 0.92;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 .cp-1 {
-  transform: translate(-50%, -60%) rotate(0deg);
+  transform: translate(-50%, -62%) rotate(0deg);
 }
 
 .cp-2 {
-  transform: translate(-50%, -60%) rotate(72deg);
+  transform: translate(-50%, -62%) rotate(72deg);
 }
 
 .cp-3 {
-  transform: translate(-50%, -60%) rotate(144deg);
+  transform: translate(-50%, -62%) rotate(144deg);
 }
 
 .cp-4 {
-  transform: translate(-50%, -60%) rotate(216deg);
+  transform: translate(-50%, -62%) rotate(216deg);
 }
 
 .cp-5 {
-  transform: translate(-50%, -60%) rotate(288deg);
+  transform: translate(-50%, -62%) rotate(288deg);
 }
 
 .cherry-center {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -1208,7 +1212,7 @@ body {
 .cherry-stamen {
   position: absolute;
   width: 2px;
-  height: 10px;
+  height: 12px;
   background: linear-gradient(to top, var(--peach), #fff);
   top: 50%;
   left: 50%;
@@ -1221,28 +1225,29 @@ body {
   content: '';
   position: absolute;
   top: -3px;
-  left: -1.5px;
-  width: 5px;
-  height: 5px;
+  left: -2px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--peach);
+  box-shadow: 0 0 6px rgba(255, 224, 178, 0.5);
 }
 
 .cs-1 {
-  transform: translate(-50%, -160%) rotate(-30deg);
+  transform: translate(-50%, -170%) rotate(-30deg);
 }
 
 .cs-2 {
-  transform: translate(-50%, -160%) rotate(15deg);
+  transform: translate(-50%, -170%) rotate(15deg);
 }
 
 .cs-3 {
-  transform: translate(-50%, -160%) rotate(50deg);
+  transform: translate(-50%, -170%) rotate(50deg);
 }
 
 
 /* =============================================
-   BABY'S BREATH
+   BABY'S BREATH — scattered wider
    ============================================= */
 .babys-breath {
   position: absolute;
@@ -1251,17 +1256,17 @@ body {
 
 .babys-breath span {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: radial-gradient(circle, #fff, var(--pink-1));
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
   opacity: 0;
   transform: scale(0);
 }
 
 .bb-visible span {
-  animation: bbPop 0.5s ease forwards;
+  animation: bbPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes bbPop {
@@ -1277,8 +1282,8 @@ body {
 }
 
 .bb-1 {
-  bottom: 310px;
-  left: 22%;
+  bottom: 380px;
+  left: 24%;
 }
 
 .bb-1 span:nth-child(1) {
@@ -1288,32 +1293,32 @@ body {
 }
 
 .bb-1 span:nth-child(2) {
-  top: -10px;
-  left: 12px;
+  top: -14px;
+  left: 16px;
   animation-delay: .15s;
 }
 
 .bb-1 span:nth-child(3) {
-  top: 6px;
-  left: 16px;
+  top: 8px;
+  left: 20px;
   animation-delay: .3s;
 }
 
 .bb-1 span:nth-child(4) {
-  top: -4px;
-  left: -8px;
+  top: -6px;
+  left: -10px;
   animation-delay: .45s;
 }
 
 .bb-1 span:nth-child(5) {
-  top: 10px;
-  left: 4px;
+  top: 14px;
+  left: 6px;
   animation-delay: .6s;
 }
 
 .bb-2 {
-  bottom: 330px;
-  right: 20%;
+  bottom: 400px;
+  right: 22%;
 }
 
 .bb-2 span:nth-child(1) {
@@ -1323,26 +1328,26 @@ body {
 }
 
 .bb-2 span:nth-child(2) {
-  top: -12px;
-  left: -6px;
+  top: -16px;
+  left: -8px;
   animation-delay: .25s;
 }
 
 .bb-2 span:nth-child(3) {
-  top: 4px;
-  left: -12px;
+  top: 6px;
+  left: -14px;
   animation-delay: .4s;
 }
 
 .bb-2 span:nth-child(4) {
-  top: -6px;
-  left: 8px;
+  top: -8px;
+  left: 10px;
   animation-delay: .55s;
 }
 
 .bb-3 {
-  bottom: 280px;
-  left: 44%;
+  bottom: 350px;
+  left: 46%;
 }
 
 .bb-3 span:nth-child(1) {
@@ -1352,32 +1357,32 @@ body {
 }
 
 .bb-3 span:nth-child(2) {
-  top: -8px;
-  left: 10px;
+  top: -10px;
+  left: 14px;
   animation-delay: .35s;
 }
 
 .bb-3 span:nth-child(3) {
-  top: 8px;
-  left: 14px;
+  top: 10px;
+  left: 18px;
   animation-delay: .5s;
 }
 
 .bb-3 span:nth-child(4) {
-  top: -14px;
-  left: 4px;
+  top: -18px;
+  left: 6px;
   animation-delay: .65s;
 }
 
 .bb-3 span:nth-child(5) {
-  top: 4px;
-  left: -6px;
+  top: 6px;
+  left: -8px;
   animation-delay: .8s;
 }
 
 .bb-4 {
-  bottom: 300px;
-  right: 32%;
+  bottom: 370px;
+  right: 34%;
 }
 
 .bb-4 span:nth-child(1) {
@@ -1387,14 +1392,14 @@ body {
 }
 
 .bb-4 span:nth-child(2) {
-  top: -10px;
-  left: 6px;
+  top: -12px;
+  left: 8px;
   animation-delay: .35s;
 }
 
 .bb-4 span:nth-child(3) {
-  top: 6px;
-  left: -8px;
+  top: 8px;
+  left: -10px;
   animation-delay: .55s;
 }
 
@@ -1427,12 +1432,12 @@ body {
   }
 
   85% {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-350px) scale(0.2);
+    transform: translateY(-400px) scale(0.2);
   }
 }
 
@@ -1444,7 +1449,7 @@ body {
   .date-card {
     left: 50%;
     top: auto;
-    bottom: 20px;
+    bottom: 16px;
     transform: translateX(-50%) translateY(80px);
     transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 1.8s;
   }
@@ -1454,24 +1459,24 @@ body {
   }
 
   .date-card-inner {
-    padding: 14px 24px;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
   }
 
   .date-divider {
     width: 1px;
-    height: 36px;
+    height: 32px;
     margin: 0;
   }
 
   .date-day-number {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .bouquet {
-    transform: scale(0.75);
+    transform: scale(0.8);
     transform-origin: bottom center;
   }
 }
@@ -1487,16 +1492,16 @@ body {
   }
 
   .bouquet {
-    transform: scale(0.55);
+    transform: scale(0.6);
     transform-origin: bottom center;
   }
 
   .date-card-inner {
-    padding: 12px 18px;
-    gap: 10px;
+    padding: 10px 16px;
+    gap: 8px;
   }
 
   .date-day-number {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
