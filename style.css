@@ -712,11 +712,10 @@ body {
    ============================================= */
 @media (max-width: 600px) {
   .bouquet {
-    /* Scale down specifically for mobile (iPhone 13 Pro Max ~428px, others <400px) */
-    transform: translateX(-50%) scale(0.65);
+    /* Scale down even more to fit wide flowers on narrow screens */
+    transform: translateX(-50%) scale(0.55);
     transform-origin: bottom center;
-    bottom: 5vh;
-    /* Lift slightly if needed */
+    bottom: 2vh;
   }
 
   .bouquet-title-wrap {
@@ -729,11 +728,5 @@ body {
   /* Ensure text doesn't overflow */
   .greetings {
     font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  /* Wrapper adjustments for mobile scaling context */
-  .bouquet-wrapper {
-    /* Dimensions are scaled by parent .bouquet, but we can tweak relative pos if needed */
-    bottom: -40px;
   }
 }
