@@ -1,5 +1,5 @@
 // ============================
-// Valentine's Day Website — JS (Upscaled)
+// Valentine's Day Website — JS (No Date Card)
 // ============================
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -16,17 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
       growFlowers();
     }, 500);
   });
-
-  // ---- Date Card ----
-  const now = new Date();
-  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-  if (document.getElementById('dateMonth')) {
-    document.getElementById('dateMonth').textContent = months[now.getMonth()];
-    document.getElementById('dateDay').textContent = now.getDate();
-    document.getElementById('dateWeekday').textContent = weekdays[now.getDay()];
-  }
 
   // ============================
   // FLOWER CONFIGURATION (Taller Stems for Big Flowers)
@@ -59,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Set initial rotation so it's angled correctly before swaying
       wrapper.style.transform = `rotate(${f.angle}deg)`;
 
-      // Z-Index: middle items (index 3,4) are frontmost (conceptually)
-      // Actually simply:
+      // Z-Index setup
       wrapper.style.zIndex = (i < 4) ? 5 : 10;
 
       bouquet.appendChild(wrapper);
@@ -73,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3. Create Leaves
       const leafL = document.createElement('div');
       leafL.className = 'stem-leaf';
-      leafL.style.left = '-35px'; // pushed further out due to wider stems
+      leafL.style.left = '-35px';
       leafL.style.bottom = (f.h * 0.35) + 'px';
-      leafL.style.setProperty('--rot', '-35deg'); // steeper angle
+      leafL.style.setProperty('--rot', '-35deg');
       leafL.style.transform = 'rotate(-35deg) scale(0)';
       wrapper.appendChild(leafL);
 
