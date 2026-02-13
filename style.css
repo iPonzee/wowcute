@@ -1025,6 +1025,7 @@ body {
   border-left: 2vmin solid var(--stem-dark);
   background-image: linear-gradient(to bottom, transparent, var(--dark-color) 60%);
   -webkit-mask-image: linear-gradient(to top, transparent 30%, var(--stem-dark) 60%);
+  mask-image: linear-gradient(to top, transparent 30%, var(--stem-dark) 60%);
 }
 
 .flower__g-right--1 {
@@ -1165,6 +1166,7 @@ body {
   border-top-left-radius: 100%;
   border-left: 2vmin solid var(--stem-dark);
   -webkit-mask-image: linear-gradient(to top, transparent 25%, var(--stem-dark) 50%);
+  mask-image: linear-gradient(to top, transparent 25%, var(--stem-dark) 50%);
   position: relative;
   z-index: 1;
 }
@@ -1181,6 +1183,7 @@ body {
     linear-gradient(to bottom left, transparent, var(--dark-color) 98%),
     linear-gradient(to bottom right, var(--stem-color) 45%, transparent 50%, transparent);
   -webkit-mask-image: linear-gradient(135deg, var(--grass-color) 40%, transparent 50%, transparent);
+  mask-image: linear-gradient(135deg, var(--grass-color) 40%, transparent 50%, transparent);
 }
 
 .flower__g-fr__leaf--1 {
@@ -1254,6 +1257,7 @@ body {
 
 .long-g--1 .leaf {
   -webkit-mask-image: linear-gradient(to top, transparent 40%, var(--stem-dark) 80%) !important;
+  mask-image: linear-gradient(to top, transparent 40%, var(--stem-dark) 80%) !important;
 }
 
 .long-g--1 .leaf--1 {
@@ -1274,6 +1278,7 @@ body {
 .long-g--2 .leaf,
 .long-g--3 .leaf {
   -webkit-mask-image: linear-gradient(to top, transparent 50%, var(--stem-dark) 80%) !important;
+  mask-image: linear-gradient(to top, transparent 50%, var(--stem-dark) 80%) !important;
 }
 
 .long-g--2 .leaf--1,
@@ -1289,6 +1294,7 @@ body {
 
 .long-g--3 .leaf {
   -webkit-mask-image: linear-gradient(to top, transparent 40%, var(--stem-dark) 80%) !important;
+  mask-image: linear-gradient(to top, transparent 40%, var(--stem-dark) 80%) !important;
 }
 
 .long-g--4 {
@@ -1300,6 +1306,7 @@ body {
 
 .long-g--4 .leaf {
   -webkit-mask-image: linear-gradient(to top, transparent 50%, var(--stem-dark) 80%) !important;
+  mask-image: linear-gradient(to top, transparent 50%, var(--stem-dark) 80%) !important;
 }
 
 .long-g--5 {
@@ -1336,6 +1343,7 @@ body {
   border-top-left-radius: 100%;
   border-left: 2vmin solid var(--c);
   -webkit-mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
+  mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
   transform-origin: bottom center;
 }
 
